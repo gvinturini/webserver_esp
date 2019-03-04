@@ -40,6 +40,10 @@ void setup() {
  
       request->send(200);
   });
+
+   server.on("/get", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(200, "text/plain", "Hello World");
+  });
  
   server.begin();
 }
