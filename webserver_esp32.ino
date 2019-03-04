@@ -30,11 +30,14 @@ void setup() {
     NULL,
     [](AsyncWebServerRequest * request, uint8_t *data, size_t len, size_t index, size_t total) {
       
+      dados[0] = '\0';
+      
       for (size_t i = 0; i < len; i++) {
-        Serial.write(data[i]);
+        //Serial.write(data[i]);
         dados[i] = (char)data[i];        
       }
       tam = len;
+      
       Serial.println();
       //Serial.println(dados);
  
@@ -51,5 +54,8 @@ void setup() {
 void loop() {
   delay(2000);
   Serial.println(tam);
-  Serial.println(dados);
+  for (size_t i = 0; i< tam; i++){
+    Serial.println(dados[i]);
+  }
+  
 }
