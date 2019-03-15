@@ -11,6 +11,7 @@ const char* password = "navi2517";
 //Variáveis para tratamento dos dados vindos do POST
 char dados[] = "";
 size_t tam;
+int valor = 0;
 
 //Declaração do WebServer
 AsyncWebServer server(80);
@@ -61,14 +62,15 @@ void setup() {
 
    //Cria o método GET
    server.on("/get", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(200, "text/plain", "Hello World"); //Envia "Hello World toda vez que o GET é requisitado
-  });
+    request->send(200, "text/plain", (String)valor); //Envia Funciona!!! toda vez que o GET é requisitado
+   });
  
   server.begin(); //Inicia o servidor
 }
 
 void loop() {
   delay(2000);
+  valor++;
   Serial.println(tam); //Printa o tamanho dos dados
   for (size_t i = 0; i< tam; i++){
     Serial.print(dados[i]); //Printa os dados separados por uma linha
